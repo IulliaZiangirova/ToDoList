@@ -1,2 +1,4 @@
-package org.example.data.dto;public class RestResponse {
+package org.example.data.dto;
+
+public record RestResponse(Object result) {
 }

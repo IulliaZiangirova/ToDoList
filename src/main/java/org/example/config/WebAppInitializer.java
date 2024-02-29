@@ -1,2 +1,21 @@
-package org.example.config;public class WebAppInitializer {
+package org.example.config;
+
+import org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{WebConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 }
