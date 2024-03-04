@@ -14,10 +14,18 @@ public class TaskMapper {
 
     private final TaskRepository taskRepository;
 
-    public Task toEntity (TaskCreationDto taskCreationDto){
+    public Task toEntityForCreation(TaskCreationDto taskCreationDto){
         Task task = new Task();
         task.setDescription(taskCreationDto.getDescription());
         task.setStatus(Status.NEW);
+        return task;
+    }
+
+    public Task toEntityForUpdate(TaskDto taskDto){
+        Task task = new Task();
+        task.setId(taskDto.getId());
+        task.setDescription(taskDto.getDescription());
+        task.setStatus(taskDto.getStatus());
         return task;
     }
 

@@ -15,6 +15,11 @@ import java.util.Set;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
+    @ExceptionHandler(NotFoundException.class)
+    protected ResponseEntity<Object> handleNotFoundException(NotFoundException e) {
+        return buildErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+
     @ExceptionHandler({IllegalArgumentException.class, IllegalStateException.class})
     protected ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
